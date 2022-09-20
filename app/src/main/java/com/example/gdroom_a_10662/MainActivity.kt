@@ -55,10 +55,8 @@ class MainActivity : AppCompatActivity() {
             setTitle("Confirmation")
             setMessage("Are You Sure to delete this data form ${note.title}?")
             setNegativeButton(
-                "Cancel",
-                DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss() })
-            setPositiveButton("Delete", DialogInterface.OnClickListener { dialogInterface, i ->
-                dialogInterface.dismiss()
+                "Cancel", DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss() })
+            setPositiveButton("Delete", DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss()
                 CoroutineScope(Dispatchers.IO).launch {
                     db.noteDao().deleteNote(note)
                     loadData()
